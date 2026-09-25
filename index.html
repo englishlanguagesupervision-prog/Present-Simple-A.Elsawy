@@ -76,6 +76,13 @@
             background: #041a14;
         }
 
+        /* Enforce robust Left-to-Right rendering for English questions & sentences */
+        .en-ltr {
+            direction: ltr !important;
+            text-align: left !important;
+            unicode-bidi: isolate;
+        }
+
         @media print {
             body * {
                 visibility: hidden;
@@ -680,15 +687,18 @@
                                 <i class="fa-solid fa-volume-high text-lg"></i>
                             </button>
                         </div>
-                        <h4 id="question-text" class="text-lg sm:text-2xl font-bold font-outfit text-white leading-relaxed dir-ltr text-left">
-                            Loading question...
-                        </h4>
-                        <p id="question-ar-hint" class="text-xs sm:text-sm text-slate-400 mt-2 text-right">
-                            توضيح السؤال بالعربية...
+                        <div class="bg-black/30 p-4 sm:p-5 rounded-2xl border border-gold-500/20">
+                            <h4 id="question-text" class="text-xl sm:text-2xl font-bold font-outfit text-white leading-relaxed en-ltr tracking-wide">
+                                Loading question...
+                            </h4>
+                        </div>
+                        <p id="question-ar-hint" class="text-xs sm:text-sm text-slate-300 mt-3 text-right flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-gold-400"></i>
+                            <span id="hint-text">توضيح السؤال بالعربية...</span>
                         </p>
                     </div>
 
-                    <!-- Choices Buttons Grid -->
+                    <!-- Choices Buttons Grid (rendered strictly LTR for English words) -->
                     <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                         <!-- Options injected by JS -->
                     </div>
@@ -1044,11 +1054,16 @@
             document.getElementById('current-question-num').innerText = currentQuestionIdx + 1;
             document.getElementById('current-q-badge').innerText = currentQuestionIdx + 1;
             document.getElementById('question-category').innerText = q.category;
-            document.getElementById('question-text').innerText = q.text;
-            document.getElementById('question-ar-hint').innerText = q.hint;
+            
+            // Render English question in strict LTR
+            const qTextElement = document.getElementById('question-text');
+            qTextElement.dir = "ltr";
+            qTextElement.innerText = q.text;
+            
+            document.getElementById('hint-text').innerText = q.hint;
             
             // Audio button bind
-            document.getElementById('question-speak-btn').onclick = () => speakSentence(q.text.replace('______', 'blank'));
+            document.getElementById('question-speak-btn').onclick = () => speakSentence(q.text.replace(/_{3,}/g, 'blank'));
 
             // Progress bar
             const progress = ((currentQuestionIdx + 1) / quizQuestions.length) * 100;
@@ -1059,19 +1074,20 @@
             feedbackBox.className = "hidden p-4 rounded-xl text-sm font-semibold mb-4";
             document.getElementById('next-btn').classList.add('hidden');
 
-            // Render options
+            // Render options strictly in LTR with badge on left
             const container = document.getElementById('options-container');
             container.innerHTML = '';
 
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-black/40 border border-white/10 hover:border-gold-400 hover:bg-gold-500/10 transition-all flex items-center justify-between group";
+                btn.className = "w-full en-ltr font-outfit text-base font-semibold p-4 rounded-xl bg-black/40 border border-white/10 hover:border-gold-400 hover:bg-gold-500/10 transition-all flex items-center justify-between group";
+                btn.setAttribute("dir", "ltr");
                 btn.innerHTML = `
-                    <span class="flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-lg bg-white/5 border border-white/20 group-hover:border-gold-400 flex items-center justify-center text-xs font-bold text-slate-300">${String.fromCharCode(65 + idx)}</span>
-                        <span class="text-white">${opt}</span>
-                    </span>
-                    <i class="fa-regular fa-circle text-slate-500 group-hover:text-gold-400"></i>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-emerald-950 border border-gold-500/30 group-hover:border-gold-400 flex items-center justify-center text-xs font-bold text-gold-300 shadow-sm">${String.fromCharCode(65 + idx)}</span>
+                        <span class="text-white text-base tracking-wide">${opt}</span>
+                    </div>
+                    <i class="fa-regular fa-circle text-slate-500 group-hover:text-gold-400 text-lg"></i>
                 `;
                 btn.onclick = () => selectAnswer(idx);
                 container.appendChild(btn);
@@ -1091,22 +1107,22 @@
                 // Correct answer
                 score++;
                 document.getElementById('live-score').innerText = score;
-                buttons[selectedIndex].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/60 border-2 border-emerald-400 text-white flex items-center justify-between";
-                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+                buttons[selectedIndex].className = "w-full en-ltr font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/70 border-2 border-emerald-400 text-white flex items-center justify-between";
+                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-check text-emerald-300 text-xl";
 
-                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-emerald-950/60 border border-emerald-500 text-emerald-200 block";
-                feedbackBox.innerHTML = `<i class="fa-solid fa-check-circle ml-2"></i> <strong>إجابة صحيحة وممتازة!</strong> ${q.explanation}`;
+                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-emerald-950/70 border border-emerald-500 text-emerald-200 block text-right";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-check ml-2 text-emerald-400"></i> <strong>إجابة صحيحة وممتازة!</strong> ${q.explanation}`;
             } else {
                 // Wrong answer
-                buttons[selectedIndex].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-rose-950/60 border-2 border-rose-500 text-white flex items-center justify-between";
-                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+                buttons[selectedIndex].className = "w-full en-ltr font-outfit text-base font-semibold p-4 rounded-xl bg-rose-950/70 border-2 border-rose-500 text-white flex items-center justify-between";
+                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-xmark text-rose-400 text-xl";
 
                 // Highlight correct
-                buttons[q.answer].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/40 border border-emerald-400 text-white flex items-center justify-between";
-                buttons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+                buttons[q.answer].className = "w-full en-ltr font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/50 border border-emerald-400 text-white flex items-center justify-between";
+                buttons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-emerald-300 text-xl";
 
-                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-rose-950/60 border border-rose-500 text-rose-200 block";
-                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark ml-2"></i> <strong>إجابة غير دقيقة:</strong> ${q.explanation}`;
+                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-rose-950/70 border border-rose-500 text-rose-200 block text-right";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark ml-2 text-rose-400"></i> <strong>إجابة غير صحيحة:</strong> ${q.explanation}`;
             }
 
             document.getElementById('next-btn').classList.remove('hidden');
