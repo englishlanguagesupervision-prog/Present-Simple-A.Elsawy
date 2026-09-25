@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElsawyApp | شرح زمن المضارع البسيط - مستر عبد السلام الصاوي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;700;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FBF5D8',
+                            200: '#F6E6AC',
+                            300: '#EED37B',
+                            400: '#E5BD4C',
+                            500: '#D4AF37', /* Royal Gold */
+                            600: '#AA8522',
+                            700: '#7E6014',
+                        },
+                        emeraldDark: {
+                            800: '#062B22',
+                            900: '#031D17',
+                            950: '#01100C',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #02120e;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #99781B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(135deg, #f6e6ac, #d4af37, #7e6014) 1;
+        }
+
+        .glass-card {
+            background: rgba(6, 43, 34, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+        }
+
+        .certificate-border-outer {
+            border: 12px double #d4af37;
+            background: #041a14;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #certificate-modal, #certificate-modal * {
+                visibility: visible;
+            }
+            #certificate-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background: white !important;
+                color: black !important;
+                padding: 0;
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Pulse glow animation */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.7); }
+        }
+        .luxury-glow {
+            animation: pulseGlow 3s infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-emeraldDark-950">
+
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-gold-500/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- App Brand & Teacher -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-gold-600 to-gold-300 flex items-center justify-center text-emeraldDark-950 font-cinzel font-black text-2xl shadow-lg border border-gold-200">
+                    E
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-black font-cinzel tracking-wide text-white flex items-center gap-2">
+                        Elsawy<span class="text-gold-400">App</span>
+                    </h1>
+                    <p class="text-xs text-gold-300 font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-chalkboard-user text-[11px]"></i>
+                        <span>Teacher / Abdelsalam Elsawy</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Navigation links desktop -->
+                <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-200">
+                    <a href="#intro" class="hover:text-gold-400 transition-colors">المفهوم</a>
+                    <a href="#formation" class="hover:text-gold-400 transition-colors">التكوين والقواعد</a>
+                    <a href="#negation" class="hover:text-gold-400 transition-colors">النفي والسؤال</a>
+                    <a href="#keywords" class="hover:text-gold-400 transition-colors">الكلمات الدالة</a>
+                    <a href="#quiz-section" class="hover:text-gold-400 transition-colors">الاختبار (20 نقطة)</a>
+                </nav>
+
+                <!-- WhatsApp Button (Always Active) -->
+                <a href="https://wa.me/201002842010" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm border border-emerald-400/50 shadow-lg shadow-emerald-950/50 transition-all transform hover:scale-105"
+                   title="تواصل مباشرة عبر واتساب">
+                    <i class="fa-brands fa-whatsapp text-lg text-green-200"></i>
+                    <span class="hidden sm:inline">واتساب: +20 10 02842010</span>
+                    <span class="sm:hidden">واتساب</span>
+                </a>
+
+                <!-- Start Quiz CTA Button -->
+                <a href="#quiz-section" 
+                   class="px-4 py-2 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-emeraldDark-950 font-bold text-xs sm:text-sm shadow-md transition-all">
+                    <i class="fa-solid fa-graduation-cap ml-1"></i> الاختبار
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28 pb-20">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+            <div class="absolute inset-0 -z-10 flex items-center justify-center opacity-25 pointer-events-none">
+                <div class="w-[500px] h-[500px] bg-gradient-to-tr from-gold-500/20 to-emerald-500/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs sm:text-sm font-semibold mb-6">
+                    <i class="fa-solid fa-crown text-gold-400"></i>
+                    <span>المنصة التعليمية الملكية للغة الإنجليزية | إشراف مستر عبد السلام الصاوي</span>
+                </div>
+                
+                <h2 class="text-4xl sm:text-6xl font-extrabold text-white leading-tight mb-4">
+                    إتقان زمن <span class="gold-gradient-text">المضارع البسيط</span>
+                    <br><span class="text-2xl sm:text-4xl text-slate-300 font-outfit">Present Simple Tense</span>
+                </h2>
+                
+                <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed">
+                    دليل شامل وتفاعلي يغطي كل جوانب التكوين، الاستخدام، النفي، وتكوين الأسئلة مع أمثلة صوتية وتوضيحية، متبوع باختبار من 20 نقطة يؤهلك لنيل <strong class="text-gold-300">شهادة تفوق معتمدة</strong> بنسبة 85% فما فوق.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#intro" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-emeraldDark-950 font-black text-base shadow-lg shadow-gold-500/20 hover:scale-105 transition-all">
+                        <i class="fa-solid fa-book-open ml-2"></i> ابدأ الشرح المفصل
+                    </a>
+                    <a href="#quiz-section" class="px-6 py-3.5 rounded-xl glass-card border border-gold-500/40 text-gold-300 font-bold text-base hover:bg-gold-500/10 hover:scale-105 transition-all">
+                        <i class="fa-solid fa-pen-nib ml-2"></i> الانتقال للاختبار مباشرة
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-lg bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 text-xl font-bold">1</div>
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">متى نستخدم المضارع البسيط؟ (Usage)</h3>
+                    <p class="text-sm text-gold-300/80">المواقف الحقيقية التي نستعمل فيها زمن Present Simple في حياتنا</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Fact Card -->
+                <div class="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-gold-400/60 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">1. الحقائق العلمية والثابتة (Facts)</h4>
+                    <p class="text-sm text-slate-300 mb-4">الأمور الكونية أو العلمية التي لا تتغير بمرور الزمن.</p>
+                    <div class="bg-black/40 rounded-xl p-3 border border-white/5 space-y-2">
+                        <div class="flex items-center justify-between text-xs sm:text-sm font-outfit text-gold-200">
+                            <span>"The sun rises in the east."</span>
+                            <button onclick="speakSentence('The sun rises in the east.')" class="text-gold-400 hover:text-white" title="استمع للنطق">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-400">الشمس تشرق من الشرق (حقيقة فلكية).</p>
+                    </div>
+                </div>
+
+                <!-- Habits Card -->
+                <div class="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-gold-400/60 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">2. العادات والروتين (Habits & Routines)</h4>
+                    <p class="text-sm text-slate-300 mb-4">الأفعال التي نكررها بانتظام يومياً، أسبوعياً أو شهرياً.</p>
+                    <div class="bg-black/40 rounded-xl p-3 border border-white/5 space-y-2">
+                        <div class="flex items-center justify-between text-xs sm:text-sm font-outfit text-gold-200">
+                            <span>"Omar reads books every night."</span>
+                            <button onclick="speakSentence('Omar reads books every night.')" class="text-gold-400 hover:text-white" title="استمع للنطق">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-400">عمر يقرأ الكتب كل ليلة (عادة مستمرة).</p>
+                    </div>
+                </div>
+
+                <!-- Timetables Card -->
+                <div class="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-gold-400/60 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">3. المواعيد والجداول (Timetables)</h4>
+                    <p class="text-sm text-slate-300 mb-4">مواعيد القطارات، الطائرات، وبداية الحصص والامتحانات الثابتة.</p>
+                    <div class="bg-black/40 rounded-xl p-3 border border-white/5 space-y-2">
+                        <div class="flex items-center justify-between text-xs sm:text-sm font-outfit text-gold-200">
+                            <span>"The train leaves at 7:00 AM."</span>
+                            <button onclick="speakSentence('The train leaves at seven AM.')" class="text-gold-400 hover:text-white" title="استمع للنطق">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-400">يغادر القطار الساعة السابعة صباحاً.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-lg bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 text-xl font-bold">2</div>
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">التكوين وقواعد إضافة (s / es / ies)</h3>
+                    <p class="text-sm text-gold-300/80">Affirmative Form & Spelling Rules</p>
+                </div>
+            </div>
+
+            <!-- Two Main Subject Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <!-- Group 1: Plural & I -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-emerald-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold">الفئة الأولى (الجمع + I)</span>
+                        <span class="text-xl font-outfit font-black text-white">I, We, They, You</span>
+                    </div>
+                    <div class="p-4 bg-emerald-950/40 rounded-xl border border-emerald-500/30 mb-4 text-center">
+                        <p class="text-sm text-slate-300">القاعدة الأساسية:</p>
+                        <p class="text-xl font-bold text-gold-300 font-outfit mt-1">Subject + Verb (Infinitive / مصدر الفعل بدون أي إضافات)</p>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-emerald-400">They play</strong> football every Friday.</span>
+                            <button onclick="speakSentence('They play football every Friday.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-emerald-400">I drink</strong> milk in the morning.</span>
+                            <button onclick="speakSentence('I drink milk in the morning.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-emerald-400">We speak</strong> Arabic and English.</span>
+                            <button onclick="speakSentence('We speak Arabic and English.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 2: Singular He She It -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-gold-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 text-xs font-bold">الفئة الثانية (المفرد الغائب)</span>
+                        <span class="text-xl font-outfit font-black text-white">He, She, It, Singular Noun</span>
+                    </div>
+                    <div class="p-4 bg-gold-950/40 rounded-xl border border-gold-500/30 mb-4 text-center">
+                        <p class="text-sm text-slate-300">القاعدة الأساسية:</p>
+                        <p class="text-xl font-bold text-gold-300 font-outfit mt-1">Subject + Verb + ( -s / -es / -ies )</p>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-gold-400">Ahmed lives</strong> in Cairo.</span>
+                            <button onclick="speakSentence('Ahmed lives in Cairo.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-gold-400">He teaches</strong> English brilliantly.</span>
+                            <button onclick="speakSentence('He teaches English brilliantly.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="flex items-center justify-between p-2 rounded-lg bg-black/20">
+                            <span><strong class="text-gold-400">The boy studies</strong> hard for exams.</span>
+                            <button onclick="speakSentence('The boy studies hard for exams.')" class="text-gold-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Detailed Spelling Rules Grid -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h4 class="text-xl font-bold text-gold-300 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-spell-check text-gold-400"></i>
+                    <span>قواعد إضافة الحروف مع الفاعل المفرد (He / She / It):</span>
+                </h4>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <!-- Rule 1: ES -->
+                    <div class="p-4 rounded-xl bg-black/30 border border-gold-500/20">
+                        <span class="inline-block px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 font-mono text-sm font-bold mb-2">إضافة ( -es )</span>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            إذا انتهى الفعل بأحد الأصوات الصفيرية التالية:
+                            <br><strong class="text-gold-300 font-mono text-sm">ch, sh, ss, x, o, z</strong>
+                        </p>
+                        <div class="text-xs space-y-1 font-mono text-slate-200">
+                            <div>watch &rarr; <span class="text-gold-400 font-bold">watches</span></div>
+                            <div>wash &rarr; <span class="text-gold-400 font-bold">washes</span></div>
+                            <div>pass &rarr; <span class="text-gold-400 font-bold">passes</span></div>
+                            <div>go &rarr; <span class="text-gold-400 font-bold">goes</span></div>
+                            <div>fix &rarr; <span class="text-gold-400 font-bold">fixes</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 2: IES -->
+                    <div class="p-4 rounded-xl bg-black/30 border border-gold-500/20">
+                        <span class="inline-block px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 font-mono text-sm font-bold mb-2">إضافة ( -ies )</span>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            إذا انتهى الفعل بحرف <strong class="text-gold-300 font-mono">y</strong> مسبوق بحرف ساكن (consonant)، نحذف الـ y ونضيف <strong class="text-gold-300 font-mono">ies</strong>:
+                        </p>
+                        <div class="text-xs space-y-1 font-mono text-slate-200">
+                            <div>study &rarr; <span class="text-gold-400 font-bold">studies</span></div>
+                            <div>carry &rarr; <span class="text-gold-400 font-bold">carries</span></div>
+                            <div>cry &rarr; <span class="text-gold-400 font-bold">cries</span></div>
+                            <div class="text-rose-300 text-[11px] pt-1 font-sans">* تنبيه: إذا كان قبل الـ y حرف متحرك (a,e,i,o,u) نضيف s فقط: play &rarr; plays</div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 3: Regular S -->
+                    <div class="p-4 rounded-xl bg-black/30 border border-gold-500/20">
+                        <span class="inline-block px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 font-mono text-sm font-bold mb-2">إضافة ( -s ) العامة</span>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            مع باقي أغلب الأفعال في اللغة الإنجليزية، نضيف فقط حرف <strong class="text-gold-300 font-mono">s</strong> مباشرة:
+                        </p>
+                        <div class="text-xs space-y-1 font-mono text-slate-200">
+                            <div>speak &rarr; <span class="text-gold-400 font-bold">speaks</span></div>
+                            <div>write &rarr; <span class="text-gold-400 font-bold">writes</span></div>
+                            <div>run &rarr; <span class="text-gold-400 font-bold">runs</span></div>
+                            <div>eat &rarr; <span class="text-gold-400 font-bold">eats</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="negation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-lg bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 text-xl font-bold">3</div>
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">النفي وتكوين السؤال (Negative & Questions)</h3>
+                    <p class="text-sm text-gold-300/80">استخدام الأفعال المساعدة Do / Does مع عودة الفعل للمصدر دائماً</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Negative Form Card -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-xl font-bold text-rose-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-ban"></i>
+                        <span>أولاً: صيغة النفي (Negative Form)</span>
+                    </h4>
+                    <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                        نستخدم <strong class="text-gold-300 font-mono">don't</strong> أو <strong class="text-gold-300 font-mono">doesn't</strong> ويليهما دائماً <strong class="text-emerald-400 underline underline-offset-4">الفعل في المصدر الأساسي (Infinitive)</strong> بدون أي إضافات!
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="bg-black/30 p-3.5 rounded-xl border border-rose-500/20">
+                            <span class="text-xs font-bold text-slate-400">مع (I, We, You, They):</span>
+                            <div class="text-sm font-outfit text-white font-semibold mt-1">Subject + <span class="text-rose-400">don't (do not)</span> + Inf</div>
+                            <div class="mt-2 text-xs text-slate-300 flex items-center justify-between">
+                                <span>"They <strong>don't like</strong> fast food."</span>
+                                <button onclick="speakSentence('They do not like fast food.')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="bg-black/30 p-3.5 rounded-xl border border-rose-500/20">
+                            <span class="text-xs font-bold text-slate-400">مع (He, She, It):</span>
+                            <div class="text-sm font-outfit text-white font-semibold mt-1">Subject + <span class="text-rose-400">doesn't (does not)</span> + Inf</div>
+                            <div class="mt-2 text-xs text-slate-300 flex items-center justify-between">
+                                <span>"He <strong>doesn't wake up</strong> late." <span class="text-gold-300 text-[10px]">(وليس wakes)</span></span>
+                                <button onclick="speakSentence('He does not wake up late.')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-500/10 rounded-xl border border-amber-500/30 text-xs text-amber-200">
+                            <i class="fa-solid fa-triangle-exclamation ml-1"></i>
+                            <strong>ملاحظة هامة مع Never:</strong> تنفي الجملة ولكن الفعل بعدها مع (He/She/It) يبقى به -s!
+                            <div class="mt-1 font-mono text-slate-200">"He never drinks coffee." (نفي مع بقاء s)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions Card -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>ثانياً: تكوين الأسئلة (Question Forms)</span>
+                    </h4>
+                    
+                    <!-- Yes/No Questions -->
+                    <div class="mb-4 bg-black/30 p-3.5 rounded-xl border border-cyan-500/20">
+                        <div class="text-xs font-bold text-cyan-300 mb-1">1. سؤال بهل (Yes/No Questions)</div>
+                        <div class="text-sm font-outfit text-gold-300 font-bold mb-2">Do / Does + Subject + Base Verb (المصدر) ?</div>
+                        <div class="space-y-1 text-xs text-slate-300">
+                            <div class="flex items-center justify-between">
+                                <span>- <strong>Do</strong> you speak French? &rarr; Yes, I do. / No, I don't.</span>
+                                <button onclick="speakSentence('Do you speak French?')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>- <strong>Does</strong> Omar play tennis? &rarr; Yes, he does.</span>
+                                <button onclick="speakSentence('Does Omar play tennis?')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wh- Questions -->
+                    <div class="bg-black/30 p-3.5 rounded-xl border border-cyan-500/20">
+                        <div class="text-xs font-bold text-cyan-300 mb-1">2. السؤال بأداة استفهام (Wh- Questions)</div>
+                        <div class="text-sm font-outfit text-gold-300 font-bold mb-2">Question Word + do / does + Subject + Base Verb ?</div>
+                        <div class="space-y-1 text-xs text-slate-300">
+                            <div class="flex items-center justify-between">
+                                <span>- <strong>Where do</strong> you live? &rarr; I live in Alexandria.</span>
+                                <button onclick="speakSentence('Where do you live?')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>- <strong>What time does</strong> the lesson start?</span>
+                                <button onclick="speakSentence('What time does the lesson start?')" class="text-gold-400"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="keywords" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-lg bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 text-xl font-bold">4</div>
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">الكلمات الدالة وظروف التكرار (Keywords)</h3>
+                    <p class="text-sm text-gold-300/80">Adverbs of frequency and time expressions</p>
+                </div>
+            </div>
+
+            <!-- Adverbs scale -->
+            <div class="glass-card p-6 rounded-2xl mb-8">
+                <h4 class="text-lg font-bold text-gold-300 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-gold-400"></i>
+                    <span>مقياس ظروف التكرار (Adverbs of Frequency):</span>
+                </h4>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
+                    <div class="p-3 bg-black/40 rounded-xl border border-emerald-500/30">
+                        <span class="block text-xl font-black text-emerald-400">100%</span>
+                        <span class="font-outfit font-bold text-white">Always</span>
+                        <span class="block text-xs text-slate-400 mt-1">دائماً</span>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded-xl border border-emerald-500/30">
+                        <span class="block text-xl font-black text-teal-400">80%</span>
+                        <span class="font-outfit font-bold text-white">Usually</span>
+                        <span class="block text-xs text-slate-400 mt-1">عادةً</span>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded-xl border border-emerald-500/30">
+                        <span class="block text-xl font-black text-blue-400">70%</span>
+                        <span class="font-outfit font-bold text-white">Often</span>
+                        <span class="block text-xs text-slate-400 mt-1">غالباً</span>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded-xl border border-emerald-500/30">
+                        <span class="block text-xl font-black text-amber-400">50%</span>
+                        <span class="font-outfit font-bold text-white">Sometimes</span>
+                        <span class="block text-xs text-slate-400 mt-1">أحياناً</span>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded-xl border border-emerald-500/30 col-span-2 sm:col-span-1">
+                        <span class="block text-xl font-black text-rose-400">0%</span>
+                        <span class="font-outfit font-bold text-white">Never</span>
+                        <span class="block text-xs text-slate-400 mt-1">أبداً / إطلاقاً</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-gold-950/30 border border-gold-500/30 text-sm">
+                    <span class="font-bold text-gold-300 block mb-1"><i class="fa-solid fa-location-dot ml-1"></i> مكان ظرف التكرار في الجملة:</span>
+                    <ol class="list-decimal list-inside space-y-1 text-xs text-slate-300">
+                        <li><strong>قبل الفعل الأساسي:</strong> He <span class="text-gold-300 font-bold">always gets up</span> early.</li>
+                        <li><strong>بعد فعل يكون (Verb to Be - am/is/are):</strong> He is <span class="text-gold-300 font-bold">always</span> on time.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Time Expressions Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-5 rounded-xl border-l-4 border-l-gold-400">
+                    <h5 class="font-bold text-gold-300 mb-2">تعبيرات Every</h5>
+                    <p class="text-xs text-slate-300">every day, every week, every month, every year.</p>
+                    <p class="text-[11px] text-slate-400 mt-2">"We visit my grandfather every Friday."</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl border-l-4 border-l-gold-400">
+                    <h5 class="font-bold text-gold-300 mb-2">تعبيرات الأوقات</h5>
+                    <p class="text-xs text-slate-300">in the morning, at night, on Mondays, at weekends.</p>
+                    <p class="text-[11px] text-slate-400 mt-2">"I exercise in the morning."</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl border-l-4 border-l-gold-400">
+                    <h5 class="font-bold text-gold-300 mb-2">تكرار المرات</h5>
+                    <p class="text-xs text-slate-300">once a week, twice a month, three times a year.</p>
+                    <p class="text-[11px] text-slate-400 mt-2">"He plays tennis twice a week."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-10">
+                <h3 class="text-2xl sm:text-3xl font-bold text-white">نماذج مصورة وأمثلة تطبيقية</h3>
+                <p class="text-sm text-gold-300/80">أمثلة واضحة بأصوات تعليمية وبطاقات توضيحية هادفة</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Boy reading / studying -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform">
+                    <div class="h-44 bg-gradient-to-b from-emerald-900 to-black/60 flex items-center justify-center p-4">
+                        <!-- Custom SVG Male Student -->
+                        <svg class="w-28 h-28 text-gold-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="30" r="16" fill="#D4AF37" />
+                            <path d="M42 20 C42 16 58 16 58 20 C58 24 54 26 50 26 C46 26 42 24 42 20 Z" fill="#01100C"/>
+                            <path d="M26 80 C26 58 35 52 50 52 C65 52 74 58 74 80 Z" fill="#205c4d" />
+                            <rect x="35" y="66" width="30" height="20" rx="3" fill="#FFF1B0"/>
+                            <line x1="50" y1="66" x2="50" y2="86" stroke="#AA8522" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <span class="inline-block text-xs font-bold text-emerald-400 mb-1">المذاكرة والاجتهاد</span>
+                        <h4 class="text-sm font-bold text-white font-outfit mb-1">Zaid studies his lessons daily.</h4>
+                        <p class="text-xs text-slate-400 mb-3">زيد يستذكر دروسه يومياً</p>
+                        <button onclick="speakSentence('Zaid studies his lessons daily.')" class="px-3 py-1.5 rounded-lg bg-gold-500/20 text-gold-300 text-xs hover:bg-gold-500/30 transition-colors">
+                            <i class="fa-solid fa-volume-high ml-1"></i> استمع للمثال
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Teacher Abdelsalam lecturing -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform">
+                    <div class="h-44 bg-gradient-to-b from-emerald-900 to-black/60 flex items-center justify-center p-4">
+                        <!-- Custom SVG Male Teacher -->
+                        <svg class="w-28 h-28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="18" y="16" width="64" height="42" rx="4" fill="#031D17" stroke="#D4AF37" stroke-width="3"/>
+                            <text x="24" y="38" fill="#FFF1B0" font-size="10" font-family="sans-serif">He + V(s)</text>
+                            <circle cx="50" cy="56" r="14" fill="#E5BD4C"/>
+                            <!-- Short hair -->
+                            <path d="M40 48 Q50 40 60 48" stroke="#01100C" stroke-width="4"/>
+                            <path d="M30 92 C30 76 40 72 50 72 C60 72 70 76 70 92" fill="#134e4a"/>
+                            <polygon points="50,72 47,82 50,86 53,82" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <span class="inline-block text-xs font-bold text-gold-400 mb-1">المعلم والتدريس</span>
+                        <h4 class="text-sm font-bold text-white font-outfit mb-1">The teacher explains English clearly.</h4>
+                        <p class="text-xs text-slate-400 mb-3">يشرح المعلم الإنجليزية بوضوح</p>
+                        <button onclick="speakSentence('The teacher explains English clearly.')" class="px-3 py-1.5 rounded-lg bg-gold-500/20 text-gold-300 text-xs hover:bg-gold-500/30 transition-colors">
+                            <i class="fa-solid fa-volume-high ml-1"></i> استمع للمثال
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Male Athlete / Runner -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform">
+                    <div class="h-44 bg-gradient-to-b from-emerald-900 to-black/60 flex items-center justify-center p-4">
+                        <!-- Custom SVG Male Runner -->
+                        <svg class="w-28 h-28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="58" cy="24" r="10" fill="#D4AF37"/>
+                            <path d="M50 36 L62 48 L46 58 L36 50" stroke="#FFF1B0" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M62 48 L76 42" stroke="#FFF1B0" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M46 58 L54 74 L70 82" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M46 58 L32 70 L24 86" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <span class="inline-block text-xs font-bold text-cyan-400 mb-1">الرياضة واللياقة</span>
+                        <h4 class="text-sm font-bold text-white font-outfit mb-1">Adam runs five miles every morning.</h4>
+                        <p class="text-xs text-slate-400 mb-3">آدم يركض 5 أميال كل صباح</p>
+                        <button onclick="speakSentence('Adam runs five miles every morning.')" class="px-3 py-1.5 rounded-lg bg-gold-500/20 text-gold-300 text-xs hover:bg-gold-500/30 transition-colors">
+                            <i class="fa-solid fa-volume-high ml-1"></i> استمع للمثال
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: School Bus / Transport -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform">
+                    <div class="h-44 bg-gradient-to-b from-emerald-900 to-black/60 flex items-center justify-center p-4">
+                        <!-- Custom SVG Bus -->
+                        <svg class="w-28 h-28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="32" width="70" height="38" rx="8" fill="#E5BD4C"/>
+                            <rect x="22" y="38" width="16" height="14" rx="2" fill="#01100C"/>
+                            <rect x="42" y="38" width="16" height="14" rx="2" fill="#01100C"/>
+                            <rect x="62" y="38" width="16" height="14" rx="2" fill="#01100C"/>
+                            <circle cx="32" cy="70" r="8" fill="#1e293b" stroke="#D4AF37" stroke-width="2"/>
+                            <circle cx="68" cy="70" r="8" fill="#1e293b" stroke="#D4AF37" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <span class="inline-block text-xs font-bold text-amber-400 mb-1">وسائل النقل والمواعيد</span>
+                        <h4 class="text-sm font-bold text-white font-outfit mb-1">The school bus arrives at 7:30.</h4>
+                        <p class="text-xs text-slate-400 mb-3">حافلة المدرسة تصل في 7:30</p>
+                        <button onclick="speakSentence('The school bus arrives at seven thirty.')" class="px-3 py-1.5 rounded-lg bg-gold-500/20 text-gold-300 text-xs hover:bg-gold-500/30 transition-colors">
+                            <i class="fa-solid fa-volume-high ml-1"></i> استمع للمثال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/20 text-gold-300 text-sm font-bold mb-3 border border-gold-500/40">
+                    <i class="fa-solid fa-award"></i>
+                    <span>تحدي التميز والشهادة الملكية</span>
+                </div>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">الاختبار الشامل (20 نقطة)</h3>
+                <p class="text-slate-300 text-sm max-w-xl mx-auto mt-2">
+                    أجب عن الأسئلة بدقة. تحقيق نسبة <strong class="text-gold-300 font-bold text-base">85% فأكثر (17 من 20 على الأقل)</strong> يمنحك شهادة اجتياز فاخرة باسمك موقعة من الأستاذ عبد السلام الصاوي!
+                </p>
+            </div>
+
+            <!-- Quiz Container Card -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-gold-500/30 shadow-2xl relative">
+                <!-- Quiz Header & Progress Bar -->
+                <div class="flex items-center justify-between text-sm font-bold text-slate-300 mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-xs" id="current-q-badge">1</span>
+                        <span>السؤال <span id="current-question-num" class="text-white">1</span> من 20</span>
+                    </div>
+                    <div class="text-gold-300 flex items-center gap-2">
+                        <span>الدرجة الحالية:</span>
+                        <span id="live-score" class="text-lg font-outfit font-black text-white">0</span>
+                    </div>
+                </div>
+
+                <!-- Progress Track -->
+                <div class="w-full h-3 bg-black/50 rounded-full overflow-hidden mb-8 border border-white/10">
+                    <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-amber-300 transition-all duration-300" style="width: 5%"></div>
+                </div>
+
+                <!-- Question Box Area -->
+                <div id="quiz-box">
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between">
+                            <span id="question-category" class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 mb-3 inline-block">التكوين والفاعل</span>
+                            <button id="question-speak-btn" class="text-gold-400 hover:text-white transition-colors" title="استمع للسؤال">
+                                <i class="fa-solid fa-volume-high text-lg"></i>
+                            </button>
+                        </div>
+                        <h4 id="question-text" class="text-lg sm:text-2xl font-bold font-outfit text-white leading-relaxed dir-ltr text-left">
+                            Loading question...
+                        </h4>
+                        <p id="question-ar-hint" class="text-xs sm:text-sm text-slate-400 mt-2 text-right">
+                            توضيح السؤال بالعربية...
+                        </p>
+                    </div>
+
+                    <!-- Choices Buttons Grid -->
+                    <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <!-- Options injected by JS -->
+                    </div>
+
+                    <!-- Feedback message box -->
+                    <div id="feedback-box" class="hidden p-4 rounded-xl text-sm font-semibold mb-4"></div>
+
+                    <!-- Next & Control Buttons -->
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-slate-400">انقر على الإجابة الصحيحة للتقدم</span>
+                        <button id="next-btn" class="hidden px-6 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-emeraldDark-950 font-bold text-sm shadow hover:scale-105 transition-all">
+                            السؤال التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Screen (Initially Hidden) -->
+                <div id="result-box" class="hidden text-center py-8">
+                    <div id="result-icon-container" class="w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl">
+                        <!-- Icon Trophy / Medal -->
+                    </div>
+                    
+                    <h4 id="result-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2">تهانينا! لقد اجتزت الاختبار بنجاح</h4>
+                    <p id="result-subtitle" class="text-sm text-slate-300 max-w-md mx-auto mb-6">لقد أثبتّ تميزك في فهم وتطبيق قواعد زمن المضارع البسيط.</p>
+
+                    <!-- Score display card -->
+                    <div class="inline-flex items-center gap-6 p-4 rounded-2xl bg-black/40 border border-gold-500/30 mb-8">
+                        <div>
+                            <span class="text-xs text-slate-400 block">النتيجة النهائية</span>
+                            <span id="final-score-text" class="text-3xl font-outfit font-black text-gold-300">19 / 20</span>
+                        </div>
+                        <div class="h-10 w-px bg-white/20"></div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">النسبة المئوية</span>
+                            <span id="final-percentage-text" class="text-3xl font-outfit font-black text-emerald-400">95%</span>
+                        </div>
+                    </div>
+
+                    <!-- Name input for Certificate if >= 85% -->
+                    <div id="certificate-input-area" class="max-w-md mx-auto mb-8 hidden">
+                        <label class="block text-sm font-bold text-gold-300 mb-2">اكتب اسمك بالكامل لإصداره على الشهادة الفاخرة:</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="student-name-input" placeholder="مثال: أحمد محمد علي" 
+                                   class="flex-1 px-4 py-3 rounded-xl bg-emeraldDark-900 border border-gold-500/50 text-white placeholder-slate-500 focus:outline-none focus:border-gold-300 text-center font-bold">
+                            <button onclick="generateCertificate()" 
+                                    class="px-5 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-emeraldDark-950 font-black text-sm shadow hover:scale-105 transition-all">
+                                <i class="fa-solid fa-file-certificate ml-1"></i> عرض الشهادة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Retake Action -->
+                    <div class="flex items-center justify-center gap-4">
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-xl border border-white/20 hover:bg-white/10 text-white text-sm font-bold transition-all">
+                            <i class="fa-solid fa-rotate-right ml-1"></i> إعادة الاختبار
+                        </button>
+                        <a href="https://wa.me/201002842010" target="_blank" class="px-6 py-2.5 rounded-xl bg-emerald-600/80 hover:bg-emerald-500 text-white text-sm font-bold transition-all">
+                            <i class="fa-brands fa-whatsapp ml-1"></i> تواصل مع مستر عبد السلام
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="certificate-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="max-w-4xl w-full certificate-border-outer rounded-3xl p-6 sm:p-12 relative shadow-2xl text-center bg-[#031913] text-white my-auto">
+            <!-- Modal Close and Print Tools (Excluded from print) -->
+            <div class="absolute top-4 left-4 no-print flex items-center gap-3">
+                <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-gold-500 text-emeraldDark-950 font-black text-xs sm:text-sm hover:bg-gold-400 transition-all flex items-center gap-1 shadow-lg">
+                    <i class="fa-solid fa-print"></i> طباعة / حفظ كـ PDF
+                </button>
+                <button onclick="closeCertificate()" class="w-9 h-9 rounded-full bg-white/10 text-white hover:bg-rose-600 transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Certificate Decorative Corner Ornaments -->
+            <div class="absolute top-3 right-3 text-gold-500/40 text-3xl font-cinzel">✦</div>
+            <div class="absolute bottom-3 left-3 text-gold-500/40 text-3xl font-cinzel">✦</div>
+            <div class="absolute bottom-3 right-3 text-gold-500/40 text-3xl font-cinzel">✦</div>
+
+            <!-- Royal Watermark Header -->
+            <div class="mb-4">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-gradient-to-tr from-gold-600 via-gold-400 to-amber-200 p-0.5 shadow-2xl mb-3">
+                    <div class="w-full h-full rounded-full bg-[#031913] flex items-center justify-center text-gold-400 text-3xl sm:text-4xl">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl sm:text-3xl font-cinzel tracking-widest text-gold-400 font-black uppercase">Certificate of Excellence</h3>
+                <h4 class="text-xs sm:text-sm tracking-widest text-slate-300 font-cinzel uppercase mt-1">ElsawyApp Academy • Present Simple Mastery</h4>
+            </div>
+
+            <!-- Certificate Body -->
+            <div class="my-6 sm:my-8 space-y-4">
+                <p class="text-xs sm:text-sm text-slate-300">تُشهد منصة <strong class="text-gold-300">ElsawyApp</strong> التعليمية بأن الطالب المتميز / الطالبة المتميزة:</p>
+                
+                <!-- Student Full Name -->
+                <div class="py-2 border-b-2 border-gold-500/60 max-w-lg mx-auto">
+                    <h2 id="cert-student-name" class="text-2xl sm:text-4xl font-extrabold gold-gradient-text tracking-wide">
+                        اسم الطالب يظهر هنا
+                    </h2>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed pt-2">
+                    قد اجتاز بنجاح وتفوق باهر الاختبار الشامل في قواعد وتطبيقات <strong class="text-white font-bold">زمن المضارع البسيط (Present Simple Tense)</strong> وحصل على تقييم امتياز بنسبة:
+                </p>
+
+                <!-- Badge & Score Graphic in Certificate -->
+                <div class="flex items-center justify-center gap-6 my-4">
+                    <div id="cert-badge-icon" class="text-4xl sm:text-5xl text-gold-400 drop-shadow-md">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="text-right">
+                        <span id="cert-score-display" class="text-3xl sm:text-4xl font-outfit font-black text-gold-300 block">100%</span>
+                        <span id="cert-rank-text" class="text-xs font-bold text-emerald-300 block">مرتبة الشرف الذهبية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signatures and Verification Footer -->
+            <div class="grid grid-cols-2 gap-6 pt-6 sm:pt-8 border-t border-gold-500/30 text-xs sm:text-sm items-end">
+                <!-- Teacher Signature -->
+                <div class="text-center">
+                    <div class="font-cinzel text-gold-400 font-bold tracking-wider text-base sm:text-lg mb-1">
+                        Abdelsalam Elsawy
+                    </div>
+                    <div class="text-slate-300 font-bold">معلم أول لغة إنجليزية</div>
+                    <div class="text-slate-400 text-[11px] dir-ltr mt-0.5">Teacher / Abdelsalam Elsawy</div>
+                    <div class="text-emerald-400 text-[11px] font-semibold mt-1">
+                        <i class="fa-brands fa-whatsapp"></i> +20 10 02842010
+                    </div>
+                </div>
+
+                <!-- Verification Stamp / Seal -->
+                <div class="text-center flex flex-col items-center">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-dashed border-gold-400/80 flex flex-col items-center justify-center text-gold-400 rotate-[-12deg] mb-1">
+                        <span class="text-[9px] font-black tracking-tighter">OFFICIAL SEAL</span>
+                        <i class="fa-solid fa-stamp text-xs my-0.5"></i>
+                        <span class="text-[8px] font-bold">VERIFIED</span>
+                    </div>
+                    <span class="text-slate-400 text-[11px]">تاريخ الاعتماد: <span id="cert-date" class="text-slate-200">2026/09/25</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201002842010" target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-900 border-2 border-emerald-200 transition-all transform hover:scale-110 group"
+       title="محادثة مباشرة مع Teacher / Abdelsalam Elsawy">
+        <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+        <span class="absolute right-full mr-3 bg-emerald-950 text-white text-xs font-bold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-emerald-500/40 pointer-events-none">
+            واتساب: +20 10 02842010
+        </span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="glass-card border-t border-gold-500/20 py-8 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-cinzel text-sm text-gold-400 font-bold">ElsawyApp • Academic English Mastery</p>
+            <p>جميع الحقوق محفوظة للمحتوى التعليمي © 2026 | تحت إشراف Teacher / Abdelsalam Elsawy</p>
+            <p>للتواصل الأكاديمي والاستفسارات عبر واتساب: <a href="https://wa.me/201002842010" class="text-emerald-400 font-bold underline dir-ltr inline-block">+20 10 02842010</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Audio pronunciation using Web Speech API
+        function speakSentence(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Quiz Questions Data (20 comprehensive questions covering all rules)
+        const quizQuestions = [
+            {
+                category: "التكوين العام (Singular s/es)",
+                text: "Omar ______ to the gym three times a week.",
+                hint: "عمر فاعل مفرد غائب (He)، ما التصريف المناسب لفعل go؟",
+                options: ["go", "goes", "going", "is go"],
+                answer: 1,
+                explanation: "مع الفاعل المفرد (He/She/It) والفعل ينتهي بـ 'o'، نضيف -es ليصبح goes."
+            },
+            {
+                category: "ضمائر الجمع (Plural Pronouns)",
+                text: "They ______ English and French fluently.",
+                hint: "الفاعل They جمع، الفعل يكون في المصدر بدون إضافات.",
+                options: ["speaks", "speaking", "speak", "speaked"],
+                answer: 2,
+                explanation: "مع (They / We / You / I) نستخدم مصدر الفعل (Infinitive) بدون أي إضافات."
+            },
+            {
+                category: "قواعد الهجاء (-ies rule)",
+                text: "The hard-working boy ______ for his exams diligently.",
+                hint: "فعل study ينتهي بـ y وقبلها حرف ساكن d مع فاعل مفرد.",
+                options: ["study", "studies", "studys", "studying"],
+                answer: 1,
+                explanation: "نحذف الـ y ونضيف -ies إذا سبقها حرف ساكن: study &rarr; studies."
+            },
+            {
+                category: "صيغة النفي (Negative)",
+                text: "Ali ______ like drinking soda; he prefers water.",
+                hint: "علي فاعل مفرد، ما أداة النفي للمفرد في المضارع البسيط؟",
+                options: ["don't", "isn't", "doesn't", "aren't"],
+                answer: 2,
+                explanation: "نستخدم doesn't لنفي الفاعل المفرد الغائب (He / She / It)."
+            },
+            {
+                category: "المصدر بعد النفي (Base Verb)",
+                text: "We don't ______ basketball on Mondays.",
+                hint: "بعد don't و doesn't يأتي الفعل دائماً في...",
+                options: ["plays", "played", "playing", "play"],
+                answer: 3,
+                explanation: "بعد don't / doesn't يأتي دائماً الفعل في المصدر (infinitive) بدون أي إضافات."
+            },
+            {
+                category: "السؤال بهل (Do / Does)",
+                text: "______ your brother live in Alexandria?",
+                hint: "your brother مفرد (He)، ما الفعل المساعد المناسب؟",
+                options: ["Do", "Does", "Is", "Are"],
+                answer: 1,
+                explanation: "نستخدم Does للسؤال مع الفاعل المفرد الغائب (He / She / It)."
+            },
+            {
+                category: "السؤال مع الجمع (Do / Does)",
+                text: "______ you study English every day?",
+                hint: "مع الضمير you نستخدم الفعل المساعد...",
+                options: ["Do", "Does", "Are", "Has"],
+                answer: 0,
+                explanation: "نستخدم Do مع الضمائر I, We, You, They."
+            },
+            {
+                category: "مكان ظروف التكرار (Adverbs position)",
+                text: "Tamer ______ late for his classes.",
+                hint: "ظرف التكرار يأتي بعد verb to be (is / am / are).",
+                options: ["never is", "is never", "never", "doesn't"],
+                answer: 1,
+                explanation: "ظروف التكرار (never, always...) تأتي دائماً *بعد* فعل to be (is never)."
+            },
+            {
+                category: "الحقائق العلمية (Facts)",
+                text: "Water ______ at 100 degrees Celsius.",
+                hint: "حقيقة علمية ثابتة، الماء اسم مفرد لا يُعد.",
+                options: ["boil", "boils", "boiling", "is boil"],
+                answer: 1,
+                explanation: "الحقائق العلمية نستخدم معها المضارع البسيط مع إضافة -s للاسم المفرد."
+            },
+            {
+                category: "قواعد الهجاء (-es with watch)",
+                text: "My father ______ news on TV every evening.",
+                hint: "فعل watch ينتهي بـ ch والفاعل My father مفرد.",
+                options: ["watch", "watches", "watchs", "is watching"],
+                answer: 1,
+                explanation: "الأفعال المنتهية بـ ch نضيف لها -es مع المفرد."
+            },
+            {
+                category: "النفي بواسطة Never",
+                text: "He never ______ lies; he is an honest boy.",
+                hint: "تنبيه: بعد never يظل الفعل مع المفرد محتفظاً بالـ -s!",
+                options: ["tell", "tells", "telling", "told"],
+                answer: 1,
+                explanation: "كلمة never تنفي الجملة ولكن لا تحذف الـ s من الفعل مع الفاعل المفرد."
+            },
+            {
+                category: "السؤال بأداة استفهام (Wh- Question)",
+                text: "Where ______ your parents spend their summer vacation?",
+                hint: "parents فاعل جمع (They)، ما الفعل المساعد المطلوب؟",
+                options: ["does", "do", "are", "have"],
+                answer: 1,
+                explanation: "نستخدم do لأن الفاعل جمع (parents)."
+            },
+            {
+                category: "المواعيد والجداول (Timetables)",
+                text: "The morning train to Cairo ______ at 8:15 AM tomorrow.",
+                hint: "جدول مواعيد وسائل النقل الثابت يُعبر عنه بالمضارع البسيط.",
+                options: ["leave", "leaves", "leaving", "will leaving"],
+                answer: 1,
+                explanation: "جداول المواعيد الثابتة تعامل بالمضارع البسيط، والقطار مفرد يأخذ leaves."
+            },
+            {
+                category: "قواعد الهجاء مع Play",
+                text: "Hassan ______ football with his friends on Fridays.",
+                hint: "play تنتهي بـ y لكن قبلها حرف متحرك a!",
+                options: ["play", "plaies", "plays", "playing"],
+                answer: 2,
+                explanation: "إذا سُبقت الـ y بحرف متحرك (a,e,i,o,u) نضع -s فقط بدون حذف الـ y."
+            },
+            {
+                category: "مكان ظرف التكرار مع الأفعال العادية",
+                text: "They ______ early on school days.",
+                hint: "ظرف التكرار يسبق الفعل الأساسي.",
+                options: ["wake always up", "always wake up", "wake up always", "always wakes up"],
+                answer: 1,
+                explanation: "يأتي ظرف التكرار (always) مباشرة قبل الفعل الأساسي (wake up)."
+            },
+            {
+                category: "تكوين السؤال والنفي المدمج",
+                text: "Why ______ you come to the training on time?",
+                hint: "سؤال منفي في المضارع البسيط موجه لـ you.",
+                options: ["doesn't", "don't", "aren't", "not"],
+                answer: 1,
+                explanation: "نستخدم don't مع الضمير you في صيغة السؤال المنفي."
+            },
+            {
+                category: "الأفعال التقريرية (Stative Verbs)",
+                text: "I ______ that learning English with Mr. Abdelsalam is fun.",
+                hint: "فعل know من أفعال المعرفة التقريرية مع الضمير I.",
+                options: ["know", "knows", "am knowing", "knowing"],
+                answer: 0,
+                explanation: "مع الضمير I نضع الفعل في المصدر know."
+            },
+            {
+                category: "السؤال عن الفاعل (Who)",
+                text: "Who ______ the best lessons in your school?",
+                hint: "عند السؤال عن الفاعل بـ Who كفرد مفرد نضع الفعل مضافاً له s.",
+                options: ["teach", "teaches", "teaching", "is teach"],
+                answer: 1,
+                explanation: "السؤال عن الفاعل المفرد يأخذ الفعل مضافاً له -es: teaches."
+            },
+            {
+                category: "فعل Have مع المفرد",
+                text: "Adam ______ a nice computer for his studies.",
+                hint: "تصريف verb to have مع المفرد He/She/It.",
+                options: ["have", "has", "haves", "having"],
+                answer: 1,
+                explanation: "يتحول الفعل have إلى has مع المفرد الغائب (He / She / It)."
+            },
+            {
+                category: "تكرار الروتين (Routine)",
+                text: "The earth ______ around the sun.",
+                hint: "حقيقة علمية مستمرة: الأرض تدور حول الشمس.",
+                options: ["move", "moving", "moves", "moved"],
+                answer: 2,
+                explanation: "الأرض مفرد، وحقيقة كونية تتطلب المضارع البسيط بإضافة -s: moves."
+            }
+        ];
+
+        // State tracking
+        let currentQuestionIdx = 0;
+        let score = 0;
+        let selectedOption = null;
+        let isAnswered = false;
+
+        function renderQuestion() {
+            isAnswered = false;
+            selectedOption = null;
+
+            const q = quizQuestions[currentQuestionIdx];
+            document.getElementById('current-question-num').innerText = currentQuestionIdx + 1;
+            document.getElementById('current-q-badge').innerText = currentQuestionIdx + 1;
+            document.getElementById('question-category').innerText = q.category;
+            document.getElementById('question-text').innerText = q.text;
+            document.getElementById('question-ar-hint').innerText = q.hint;
+            
+            // Audio button bind
+            document.getElementById('question-speak-btn').onclick = () => speakSentence(q.text.replace('______', 'blank'));
+
+            // Progress bar
+            const progress = ((currentQuestionIdx + 1) / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${progress}%`;
+
+            // Clear feedback and next button
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.className = "hidden p-4 rounded-xl text-sm font-semibold mb-4";
+            document.getElementById('next-btn').classList.add('hidden');
+
+            // Render options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-black/40 border border-white/10 hover:border-gold-400 hover:bg-gold-500/10 transition-all flex items-center justify-between group";
+                btn.innerHTML = `
+                    <span class="flex items-center gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-white/5 border border-white/20 group-hover:border-gold-400 flex items-center justify-center text-xs font-bold text-slate-300">${String.fromCharCode(65 + idx)}</span>
+                        <span class="text-white">${opt}</span>
+                    </span>
+                    <i class="fa-regular fa-circle text-slate-500 group-hover:text-gold-400"></i>
+                `;
+                btn.onclick = () => selectAnswer(idx);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const q = quizQuestions[currentQuestionIdx];
+            const container = document.getElementById('options-container');
+            const buttons = container.querySelectorAll('button');
+            const feedbackBox = document.getElementById('feedback-box');
+
+            if (selectedIndex === q.answer) {
+                // Correct answer
+                score++;
+                document.getElementById('live-score').innerText = score;
+                buttons[selectedIndex].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/60 border-2 border-emerald-400 text-white flex items-center justify-between";
+                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+
+                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-emerald-950/60 border border-emerald-500 text-emerald-200 block";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-check-circle ml-2"></i> <strong>إجابة صحيحة وممتازة!</strong> ${q.explanation}`;
+            } else {
+                // Wrong answer
+                buttons[selectedIndex].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-rose-950/60 border-2 border-rose-500 text-white flex items-center justify-between";
+                buttons[selectedIndex].querySelector('i').className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+
+                // Highlight correct
+                buttons[q.answer].className = "w-full text-left font-outfit text-base font-semibold p-4 rounded-xl bg-emerald-900/40 border border-emerald-400 text-white flex items-center justify-between";
+                buttons[q.answer].querySelector('i').className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+
+                feedbackBox.className = "p-4 rounded-xl text-sm font-semibold mb-4 bg-rose-950/60 border border-rose-500 text-rose-200 block";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark ml-2"></i> <strong>إجابة غير دقيقة:</strong> ${q.explanation}`;
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentQuestionIdx < quizQuestions.length - 1) {
+                currentQuestionIdx++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        function showResults() {
+            document.getElementById('quiz-box').classList.add('hidden');
+            const resultBox = document.getElementById('result-box');
+            resultBox.classList.remove('hidden');
+
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            document.getElementById('final-score-text').innerText = `${score} / ${quizQuestions.length}`;
+            document.getElementById('final-percentage-text').innerText = `${percentage}%`;
+
+            const iconContainer = document.getElementById('result-icon-container');
+            const title = document.getElementById('result-title');
+            const subtitle = document.getElementById('result-subtitle');
+            const certInputArea = document.getElementById('certificate-input-area');
+
+            if (percentage >= 85) {
+                // Passing (85%+)
+                if (percentage === 100) {
+                    iconContainer.className = "w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl bg-gradient-to-tr from-gold-500 to-amber-200 text-emeraldDark-950 luxury-glow";
+                    iconContainer.innerHTML = '<i class="fa-solid fa-trophy"></i>';
+                    title.innerText = "درجة شرف كاملة! 100% كأس التميز الذهبي";
+                    subtitle.innerText = "ما شاء الله! أداء مثالي بلا أي خطأ. استحققت كأس التميز وشهادة الشرف المعتمدة.";
+                } else {
+                    iconContainer.className = "w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl bg-gradient-to-tr from-gold-600 to-gold-400 text-emeraldDark-950";
+                    iconContainer.innerHTML = '<i class="fa-solid fa-medal"></i>';
+                    title.innerText = "مبارك الاجتياز بتفوق!";
+                    subtitle.innerText = "لقد حققت نسبة أعلى من 85% بنجاح. أدخل اسمك لاستلام شهادتك الملكية فوراً.";
+                }
+
+                certInputArea.classList.remove('hidden');
+
+                // Trigger celebratory confetti
+                try {
+                    confetti({
+                        particleCount: 120,
+                        spread: 80,
+                        origin: { y: 0.6 }
+                    });
+                } catch(e) {}
+            } else {
+                // Below 85%
+                iconContainer.className = "w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl bg-slate-800 text-amber-400";
+                iconContainer.innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
+                title.innerText = "محاولة جيدة، لكنك تحتاج 85% للحصول على الشهادة";
+                subtitle.innerText = `درجتك هي ${score} من 20 (${percentage}%). مطلوب 17 نقطة على الأقل. راجع الشرح بالأعلى وأعد المحاولة، فالنجاح يبدأ بالمثابرة!`;
+                certInputArea.classList.add('hidden');
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIdx = 0;
+            score = 0;
+            document.getElementById('live-score').innerText = '0';
+            document.getElementById('result-box').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function generateCertificate() {
+            const nameInput = document.getElementById('student-name-input').value.trim();
+            if (!nameInput) {
+                // Inline feedback without alert()
+                document.getElementById('student-name-input').focus();
+                document.getElementById('student-name-input').classList.add('ring-2', 'ring-rose-500');
+                return;
+            }
+
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            document.getElementById('cert-student-name').innerText = nameInput;
+            document.getElementById('cert-score-display').innerText = `${percentage}% (${score}/20)`;
+
+            // Trophy vs Medal distinction
+            const badgeIcon = document.getElementById('cert-badge-icon');
+            const rankText = document.getElementById('cert-rank-text');
+
+            if (percentage === 100) {
+                badgeIcon.innerHTML = '<i class="fa-solid fa-trophy text-amber-300 drop-shadow-[0_0_15px_rgba(251,191,36,0.6)]"></i>';
+                rankText.innerText = "كأس التفوق المطلق (العلامة الكاملة)";
+                rankText.className = "text-xs font-bold text-amber-300 block";
+            } else if (percentage >= 90) {
+                badgeIcon.innerHTML = '<i class="fa-solid fa-medal text-gold-400"></i>';
+                rankText.innerText = "الميدالية الذهبية مع مرتبة الشرف";
+                rankText.className = "text-xs font-bold text-gold-300 block";
+            } else {
+                badgeIcon.innerHTML = '<i class="fa-solid fa-medal text-slate-300"></i>';
+                rankText.innerText = "الميدالية الفضية للاجتياز المتميز";
+                rankText.className = "text-xs font-bold text-slate-300 block";
+            }
+
+            // Current Date
+            const today = new Date();
+            const dateStr = today.getFullYear() + '/' + String(today.getMonth() + 1).padStart(2, '0') + '/' + String(today.getDate()).padStart(2, '0');
+            document.getElementById('cert-date').innerText = dateStr;
+
+            // Show Certificate Modal
+            const modal = document.getElementById('certificate-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Celebration confetti burst
+            try {
+                confetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.5 }
+                });
+            } catch(e) {}
+        }
+
+        function closeCertificate() {
+            const modal = document.getElementById('certificate-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Initialize quiz on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>
